@@ -16,12 +16,9 @@ def clean_arabic_text(text: str) -> str:
     text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
     text = re.sub(r'@\w+|#\w+', '', text)
     text = re.sub(r'\d+', '', text)
-    text = re.sub(r'[\u0617-\u061A\u064B-\u0652]', '', text) # إزالة التشكيل
-    text = re.sub(r'ـ+', '', text)                           # إزالة التطويل
+    text = re.sub(r'[\u0617-\u061A\u064B-\u0652]', '', text)  # إزالة التشكيل
+    text = re.sub(r'ـ+', '', text)                            # إزالة التطويل
     text = re.sub(r'[^\w\s]', '', text)
-    text = re.sub(r'[إأآا]', 'ا', text)                      # توحيد الألف
-    text = re.sub(r'ى', 'ي', text)                           # توحيد الياء
-    text = re.sub(r'ؤ|ئ', 'ء', text)                         # توحيد الهمزات
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
